@@ -6,14 +6,14 @@ In this tutorial:
 - RealMe is treated as an external identity provider (IdP).
 - The only configured IdP is RealMe and we don't ask user to provide any futher information so from a user perspective there is no interaction with Azure AD B2C. To configure more complex user journey, please refer to the [Useful links section](#Useful-links)
 
-### 1. Creating an Azure AD B2C Tenant
+## Creating an Azure AD B2C Tenant
 
 Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant) to:
 
 - Create a new Azure AD B2C tenant
 - Link your Azure AD B2C tenant to a subscription
 
-### 2. Creating signing and encryption keys.
+## Creating signing and encryption keys.
 
 Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-get-started-custom#add-signing-and-encryption-keys) to:
 
@@ -22,7 +22,7 @@ Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b
 3. Choose **All services** in the top-left corner of the Azure portal, search for and select **Azure AD B2C**.
 4. On the Overview page, select **Identity Experience Framework**.
 
-#### Create a signing key used to sign the id_token return by Azure AD B2C
+### Create a signing key used to sign the id_token return by Azure AD B2C
 
 1. Select **Policy Keys** and then select **Add**.
 2. For **Options**, choose `Generate`.
@@ -31,7 +31,7 @@ Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b
 5. For **Key usage**, select `Signature`.
 6. Click **Create**.
 
-#### Create an encryption key used to encrypt the refresh_token return by Azure AD B2C
+### Create an encryption key used to encrypt the refresh_token return by Azure AD B2C
 
 1. Select **Policy Keys** and then select **Add**.
 2. For **Options**, choose `Generate`.
@@ -40,7 +40,7 @@ Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b
 5. For **Key usage**, select `Encryption`.
 6. Click **Create**.
 
-#### Upload the certificate used between Azure AD B2C and Relame to exchange data.
+### Upload the certificate used between Azure AD B2C and Relame to exchange data.
 
 1. Download the `Integration-Bundle-MTS-VX.X.zip` from the [RealMe Developer Website](https://developers.realme.govt.nz/try-it-out-now/) and unzip it.
 2. Rename the file `mts_mutual_ssl_sp.p12` to `mts_mutual_ssl_sp.pfx`.
@@ -51,8 +51,8 @@ Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b
 7. In **Password**, enter the password of the certificate (you can find this information in the `readme.txt` file in the `Integration-Bundle-MTS-VX.X.zip` zipped file)
 8. Click **Create**.
 
-### 3. Customizing the Custom policies files.
-
+## Customizing the Custom policies files.
+ 
 The policies files used in this tutorial have been modified from the [SocialAndLocalAccounts](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts) starter pack.
 
 To know more about policies files, you can read the associated documentation: [Policy files](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview-custom#policy-files)
@@ -82,7 +82,7 @@ To know more about policies files, you can read the associated documentation: [P
 - On the Custom Policies page of Identity Experience Framework, select **Upload Policy**.
 - In this order, upload `TrustFrameworkBase.xml`, `TrustFrameworkExtensions.xml`, `SignUpSignInRealMeLogin.xml`.
 
-### 4. Upload the B2C metadata file to RealMe
+## Upload the B2C metadata file to RealMe
 
 1. Download the B2C metadata file (replace `yourtenant` with the name of your B2C tenant):
   `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/B2C_1A_SignUpSignInRealMeLogin/samlp/metadata?idptp=RealMeLogin-SAML2`
@@ -100,7 +100,7 @@ To know more about policies files, you can read the associated documentation: [P
 - Select `ICMS XML` in the **Login Attrbiutes Token Return Type** dropdown.
 - Click **Update**.
 
-### 5. Testing the policy
+## Testing the policy
 
 To test the policy, create an application registration in the B2C. the token will be send to https://jwt.ms/.
 
@@ -125,7 +125,7 @@ You can inspect the token returned by B2C:
 - The **idp** claim contains the B2C `realme.govt.nz`.
 - The **issuerUserId** claim contains the RealMe `FLT`.
 
-### Useful links
+## Useful links
 
 Azure Active Directory B2C:
 - [Azure Active Directory B2C Overview](https://azure.microsoft.com/en-us/services/active-directory-b2c/)
