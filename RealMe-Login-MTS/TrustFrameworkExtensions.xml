@@ -27,22 +27,8 @@
             <Item Key="NameIdPolicyAllowCreate">true</Item>
             <Item Key="IncludeAuthnContextClassReferences">urn:nzl:govt:ict:stds:authn:deployment:GLS:SAML:2.0:ac:classes:LowStrength</Item>
             <Item Key="PartnerEntity"><![CDATA[
-<EntityDescriptor entityID="https://mts.realme.govt.nz/saml2" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
-<IDPSSODescriptor WantAuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
-<KeyDescriptor use="signing">
-<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-<ds:X509Data>
-<ds:X509Certificate> MIIECTCCAvGgAwIBAgIlEM4QPozANBgkqhkiG9w0BAQUFADCBtDELMAkGA1UEBhMCTloxEzARBgNV BAgTCldlbGxpbmd0b24xEzARBgNVBAcTCldlbGxpbmd0b24xJzAlBgNVBAoTHkRlcGFydG1lbnQg b2YgSW50ZXJuYWwgQWZmYWlyczEnMCUGA1UECxMeRGVwYXJ0bWVudCBvZiBJbnRlcm5hbCBBZmZh aXJzMSkwJwYDVQQDEyBtdHMuc2lnbmluZy5sb2dvbi5yZWFsbWUuZ292dC5uejAeFw0xMzA5MTEy MTU5NDVaFw0yMzA5MDkyMTU5NDVaMIG0MQswCQYDVQQGEwJOWjETMBEGA1UECBMKV2VsbGluZ3Rv bjETMBEGA1UEBxMKV2VsbGluZ3RvbjEnMCUGA1UEChMeRGVwYXJ0bWVudCBvZiBJbnRlcm5hbCBB ZmZhaXJzMScwJQYDVQQLEx5EZXBhcnRtZW50IG9mIEludGVybmFsIEFmZmFpcnMxKTAnBgNVBAMT IG10cy5zaWduaW5nLmxvZ29uLnJlYWxtZS5nb3Z0Lm56MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A MIIBCgKCAQEA5A+xjCmkrgqpSnkhCllJeisEfZn0VoyhLrPRSyZfjikufWhNoR9lDUP1wjqz/jIm q7H46t8qHFkGbLO85ODkCsYiq+gSxh+TF1K3bGwtlz7m6QYFNURFid7AH8NaXEF6rylogHjSoJx/ 1cuujIcb/qXCd0YXDICVqG74g0jkyk3V3gJuy5utTft6KrU/h9IuIudTP5xKwcaRtXlZoZkxxcOa P6aBw8EPks3mfA7pknOtb1fvlYF4bXggNFYqxJCtBi5gLYQISRL8UWAW/EdN+mDIXn9BuQAsuS3s 1DTx/+dJy+9CZXNzK5i6bCj6TBnugasbkoOx8fdpYBmGlIZO7QIDAQABoyEwHzAdBgNVHQ4EFgQU k53+2zIt62M8okGTDzgEiYfDR4swDQYJKoZIhvcNAQEFBQADggEBAFatYWgm1Tst/UbCDOXYziVp nzCs8DPcswcETlQuju3Y4ys/spMgugrErqxyWcEB9nf9amtYFPkeuCwQ9PUxHCjSCCzmS9T6PhK+ iX83vL+IlMe3RsR9pdAYBI2lUcTMLHy2jGfgwTF+nGvH/48PImu7EAZj7pQgY3gk3J1F23BZ28aH 5N+RuDBY+17nk/yiqierT1J8/RUE2SGT9029sM0XSTQNYj3rB7K6foISbhqeiNlVDBmXUBWNtNxX k6M088a1Op/ZucUC1haKpHtsszuF8wxC0PApX+yZWdiOPTewCWBhRjWMbr1gQJ7FV+LcpIHUqxaq JPsnOwYNA0BljHk=
-                    </ds:X509Certificate>
-</ds:X509Data>
-</ds:KeyInfo>
-</KeyDescriptor>
-<ArtifactResolutionService index="0" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://as.mts.realme.govt.nz/sso/ArtifactResolver/metaAlias/logon/logonidp"/>
-<NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</NameIDFormat>
-<NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</NameIDFormat>
-<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://mts.realme.govt.nz/logon-mts/mtsEntryPoint"/>
-</IDPSSODescriptor>
-</EntityDescriptor>]]>
+            Add RealMe Metadata Here
+            ]]>
             </Item>
           </Metadata>
           <CryptographicKeys>
