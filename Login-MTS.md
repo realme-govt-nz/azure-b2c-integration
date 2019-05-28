@@ -108,11 +108,11 @@ To test the policy, create an application registration in the B2C. the token wil
 2. Click on **Applications**.
 3. On the application page, clieck on **Add**
 4. On the application creation page
-  - Enter `jwt.ms` in the **Name** field.
-  - Select `Yes` for **Include web app / web API**
-  - Select `Yes` for **allow implicit flow**
-  - Enter `https://jwt.ms/` 
-  - Click on **Create**
+    - Enter `jwt.ms` in the **Name** field.
+    - Select `Yes` for **Include web app / web API**
+    - Select `Yes` for **allow implicit flow**
+    - Enter `https://jwt.ms/` 
+    - Click on **Create**
 
 5. On the  **Indentiy Experience Framework**, select the `B2C_1A_SignUpSignInRealMeLogin` policy:
 6. The previously created application should be preselected otherwithe select `jwt.ms` in the **Select application** dropdown.

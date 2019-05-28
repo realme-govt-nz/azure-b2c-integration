@@ -56,41 +56,9 @@
             <Item Key="NameIdPolicyFormat">urn:oasis:names:tc:SAML:2.0:nameid-format:transient</Item>
             <Item Key="IncludeAuthnContextClassReferences">urn:nzl:govt:ict:stds:authn:deployment:GLS:SAML:2.0:ac:classes:ModStrength</Item>
             <Item Key="PartnerEntity"><![CDATA[
-    <EntityDescriptor entityID="https://mts.realme.govt.nz/realmemts/realmeidp" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
-<IDPSSODescriptor WantAuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
-<KeyDescriptor use="signing">
-<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-<ds:X509Data>
-<ds:X509Certificate>
-    MIIEDTCCAvWgAwIBAgIEfNnfQTANBgkqhkiG9w0BAQUFADCBtjELMAkGA1UEBhMCTloxEzARBgNV
-    BAgTCldlbGxpbmd0b24xEzARBgNVBAcTCldlbGxpbmd0b24xJzAlBgNVBAoTHkRlcGFydG1lbnQg
-    b2YgSW50ZXJuYWwgQWZmYWlyczEnMCUGA1UECxMeRGVwYXJ0bWVudCBvZiBJbnRlcm5hbCBBZmZh
-    aXJzMSswKQYDVQQDEyJtdHMuc2lnbmluZy5hY2NvdW50LnJlYWxtZS5nb3Z0Lm56MB4XDTEzMDkx
-    MTIxNTkxOFoXDTIzMDkwOTIxNTkxOFowgbYxCzAJBgNVBAYTAk5aMRMwEQYDVQQIEwpXZWxsaW5n
-    dG9uMRMwEQYDVQQHEwpXZWxsaW5ndG9uMScwJQYDVQQKEx5EZXBhcnRtZW50IG9mIEludGVybmFs
-    IEFmZmFpcnMxJzAlBgNVBAsTHkRlcGFydG1lbnQgb2YgSW50ZXJuYWwgQWZmYWlyczErMCkGA1UE
-    AxMibXRzLnNpZ25pbmcuYWNjb3VudC5yZWFsbWUuZ292dC5uejCCASIwDQYJKoZIhvcNAQEBBQAD
-    ggEPADCCAQoCggEBAL5spWvmZQJKBSQmwNI/BvAqdP7QSQnTbcKeGuI9uknY2BQPmDWV8D+6ojuJ
-    ntyKvP+SKDK1eHE89k3Sb6dz6valnyQ4AIT8wEVt/Q0OZRWjng1OQw+Fo2Ica7HmEcBrlyGlMmUX
-    4ncibpjvDAxLs3FhcF+nn+9LSa/nz45kkonNbesk7ovlwupfCj1EySYbEPfOsljocbfc7H6QVl+N
-    FucezIDPWFB/M+oxijXidDcDrACS13H7kS6NcYccBFeHmL/P6hLTeBSjI9p5TzCyMiRZmGCPvJ+I
-    1IuX6AL68gC9xWW/JmX8CCig4z7xKwO4hh+nfqNVmAKz4gUgqiK4EUsCAwEAAaMhMB8wHQYDVR0O
-    BBYEFGThS3UfJlaQ/+AVOO+bNnUhm+dBMA0GCSqGSIb3DQEBBQUAA4IBAQCTEhfswHg0VbAQg+kw
-    U1Ri/hvLCOakyp3zujhZmSyyXA9UbCTTwv6utwy0n7h0/ZYEC5HzhZiA9DYjchOiEWg8tv3J3+43
-    +xwJYXbEb4pwbWR1QKwVwNMWeLfWYyZWDlaGQYbsjyv8U928zryGcMghjXkNIzy4rEN5pA9VX6bD
-    cSTH13DC87PWJcn3aiP4z++k3q6fu/5uFp2LbFRFUGIfblpr38rB3CfVXRZ0hyXIhCNy4tnlI7Mu
-    DZ9vwQN0dNet0cUat6wK7GHWA4oDa6aJc/BlHZ5IOYEdopNYwWbFTXmzxHWqwXQ+URku0YrxcIT5
-    Rv0MLYj/pxWGJ6PZjRbd
-                        </ds:X509Certificate>
-</ds:X509Data>
-</ds:KeyInfo>
-</KeyDescriptor>
-<ArtifactResolutionService index="0" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://as.mts.realme.govt.nz/sso/ArtifactResolver/metaAlias/realmemts/realmeidp"/>
-<NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
-<NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</NameIDFormat>
-<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://mts.realme.govt.nz/realme-mts/validate/realme-mts-idp.xhtml"/>
-</IDPSSODescriptor>
-</EntityDescriptor>]]></Item>
+            Add RealMe Metadata Here
+            ]]>
+            </Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageSigning" />
