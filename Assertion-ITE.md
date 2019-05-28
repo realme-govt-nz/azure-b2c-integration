@@ -34,7 +34,7 @@ Follow the integration steps as describe for the MTS environment. You will have 
 
 ## ITE Request
 
-1. Create a new ITe request on the [RealMe developers website](https://developers.realme.govt.nz/):
+1. Create a new ITE request on the [RealMe developers website](https://developers.realme.govt.nz/):
 2. In ITE request, specify:
 - `RCMS token required` in the **Opaque token** dropdown.
 - `Return JSON identity and/or address` in the **Additional setup description** textarea.
@@ -43,7 +43,7 @@ Follow the integration steps as describe for the MTS environment. You will have 
 
 TODO Add Wiki
 
-### 4. Decoding identity and address claims
+## Decoding identity and address claims
 
-5. As part of the user journey, you can decode the safe base64 identity following this tutorial: [Decoding RealMe Claims](./Decoding-RealMe-Claims.md)
+- As part of the user journey, you can decode the safe base64 identity following this tutorial: [Decoding RealMe Claims](./Decoding-RealMe-Claims.md)
 
