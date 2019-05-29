@@ -1,4 +1,4 @@
-### Azure Active Directory B2C - RealMe Assertion service - ITE Integration
+# Azure Active Directory B2C - RealMe Assertion service - ITE Integration
 
 This wiki explains how to integrate Real Me Assertion service in the RealMe ITE environment:
 
