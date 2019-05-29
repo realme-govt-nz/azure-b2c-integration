@@ -45,5 +45,5 @@ TODO Add Wiki
 
 ## Decoding identity and address claims
 
-- As part of the user journey, you can decode the safe base64 identity following this tutorial: [Decoding RealMe Claims](./Decoding-RealMe-Claims.md)
+As part of the user journey, you can decode the safe base64 identity following this tutorial: [Decoding RealMe Claims](./Decoding-RealMe-Claims.md)
 
