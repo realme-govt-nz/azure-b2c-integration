@@ -86,8 +86,6 @@ To know more about policies files, you can read the associated documentation: [P
 
 1. Download the B2C metadata file (replace `yourtenant` with the name of your B2C tenant):
   `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/B2C_1A_SignUpSignInRealMeAssertion/samlp/metadata?idptp=RealMeAssertion-SAML2`
-- If you want to use the `login.microsoftonline.com` domain, download the metadata file from this url (replace `yourtenant` with the name of your B2C tenant):
-  `https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/B2C_1A_SignUpSignInRealMeAssertion/samlp/metadata?idptp=RealMeAssertion-SAML2`
 
 2. Open the file and remove the `<Signature>...</Signature>` tag.
 
