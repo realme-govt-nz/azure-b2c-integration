@@ -52,9 +52,9 @@
             <Item Key="WantsSignedAssertions">true</Item>
             <Item Key="WantsSignedRequests">true</Item>
             <Item Key="ResponsesSigned">false</Item>
+            <Item Key="NameIdPolicyFormat">urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</Item>
             <Item Key="NameIdPolicyAllowCreate">true</Item>
-            <Item Key="NameIdPolicyFormat">urn:oasis:names:tc:SAML:2.0:nameid-format:transient</Item>
-            <Item Key="IncludeAuthnContextClassReferences">urn:nzl:govt:ict:stds:authn:deployment:GLS:SAML:2.0:ac:classes:ModStrength</Item>
+            <Item Key="IncludeAuthnContextClassReferences">urn:nzl:govt:ict:stds:authn:deployment:GLS:SAML:2.0:ac:classes:LowStrength</Item>
             <Item Key="PartnerEntity"><![CDATA[
             Add RealMe Metadata Here
             ]]>
