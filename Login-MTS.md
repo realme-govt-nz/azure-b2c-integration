@@ -42,13 +42,13 @@ Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b
 
 ### Upload the certificate used between Azure AD B2C and Relame to exchange data.
 
-1. Download the `Integration-Bundle-MTS-VX.X.zip` from the [RealMe Developer Website](https://developers.realme.govt.nz/try-it-out-now/) and unzip it.
-2. Rename the file `mts_mutual_ssl_sp.p12` to `mts_mutual_ssl_sp.pfx`.
+1. Download the `Updated-MTS-POST-Binding-Bundle-Oct-2021.zip` from the [RealMe Developer Website](https://developers.realme.govt.nz/try-it-out-now/) and unzip it.
+2. Rename the file `mts_saml_sp.p12` to `mts_saml_sp.pfx`.
 3. Select **Policy Keys** and then select **Add**.
 4. For **Options**, choose `Upload`.
 5. In **Name**, enter `SamlMessageSigning`. The prefix B2C_1A_ might be added automatically.
 6. In **File upload**, select the `mts_mutual_ssl_sp.pfx` file.
-7. In **Password**, enter the password of the certificate (you can find this information in the `readme.txt` file in the `Integration-Bundle-MTS-VX.X.zip` zipped file)
+7. In **Password**, enter the password of the certificate (you can find this information in the `readme.txt` file in the `Updated-MTS-POST-Binding-Bundle-Oct-2021.zip` zipped file or just try 'password')
 8. Click **Create**.
 
 ## Customizing the Custom policies files.
@@ -67,7 +67,7 @@ To know more about policies files, you can read the associated documentation: [P
 - `yourEntityID` with a valid RealMe Issuer (see [RealMe request parameters](https://developers.realme.govt.nz/how-realme-works/realme-request-parameters)) in this format `https://www.agencyname.govt.nz/context/application-name`
 
 3. Update the RealMe Login SAML Metadat
-- From the `Integration-Bundle-MTS-VX.X.zip` (See previous step), open the `MTSIdPLoginSAMLMetadata.xml` file.
+- From the `MTS RealMe Replatforming Bundle - POST Binding.zip` (See previous step), open the `Realme_IDP_Metadata_LoginService.xml` file.
 - Copy the content of the file (do not copy the `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` line).
 - Open the `TrustFrameworkExtensions.xml` and past here:
 
@@ -91,10 +91,10 @@ To know more about policies files, you can read the associated documentation: [P
 
 2. Open the file and remove the `<Signature>...</Signature>` tag.
 
-3. Browse this url: https://mts.realme.govt.nz/logon-mts/metadataupdate
+3. Browse this url: [https://mtscloud.realme.govt.nz/Login/Metadata/Validate)](https://mtscloud.realme.govt.nz/Login/Metadata/Validate)
 - Select the metadata file you want to upload then click **Upload File**.
 - On the next page, click **Import** then **Continue**.
-- Update your configuration: https://mts.realme.govt.nz/logon-mts/configurationupdate
+- Update your configuration: [https://mtscloud.realme.govt.nz/Login/Metadata/UpdateConfig](https://mtscloud.realme.govt.nz/Login/Metadata/UpdateConfig)
 - Select `yourEntityID` in the **entity ID** field.
 - Select `Low Strength` in the **Default Authentication Strength** dropdown. If you'd like to change the setting to `Moderate Strength`, you will have to update the `TrustFrameworkExtensions.xml` file. Search for **IncludeAuthnContextClassReferences** and change the value to `urn:nzl:govt:ict:stds:authn:deployment:GLS:SAML:2.0:ac:classes:ModStrength`.
 - Select `ICMS XML` in the **Login Attrbiutes Token Return Type** dropdown.
