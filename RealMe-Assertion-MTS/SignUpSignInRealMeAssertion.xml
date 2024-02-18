@@ -20,7 +20,7 @@
         <OutputClaim ClaimTypeReferenceId="fit" />
         <OutputClaim ClaimTypeReferenceId="safeB64Identity" />
         <OutputClaim ClaimTypeReferenceId="safeB64Address" />
-        <OutputClaim ClaimTypeReferenceId="rcmsOpaqueToken" />
+        <OutputClaim ClaimTypeReferenceId="lat" />
       </OutputClaims>
       <SubjectNamingInfo ClaimType="sub" />
     </TechnicalProfile>

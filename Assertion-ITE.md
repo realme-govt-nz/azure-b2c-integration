@@ -1,5 +1,7 @@
 # Azure Active Directory B2C - RealMe Assertion service - ITE Integration
 
+** This page needs review **
+
 This wiki explains how to integrate Real Me Assertion service in the RealMe ITE environment:
 
 ## Certificates ordering
@@ -12,32 +14,21 @@ Purchase two certificates:
 
 You will need to generate the metadata file before completing the ITE request.
 
-Follow the integration steps as describe for the MTS environment. You will have to adjust these steps:
-
-1. Use your own cert rather than using the certificate provided by RealMe (`mts_mutual_ssl_sp.pfx`).
-2. In the *TrustFrameworkExtensions.xml* file, replace this line:
-    ```
-    <OutputClaim ClaimTypeReferenceId="safeB64Identity" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:igovt:IVS:Assertion:Identity" />
-    ```
-    With this line:
-    ```
-    <OutputClaim ClaimTypeReferenceId="safeB64Identity" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:igovt:IVS:Assertion:JSON:Identity" />
-    ``` 
-3. In the *TrustFrameworkExtensions.xml* file, replace this line:
-    ```
-    <OutputClaim ClaimTypeReferenceId="safeB64Address" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:NZPost:AVS:Assertion:Address" />
-    ```
-    With this line:
-    ```
-    <OutputClaim ClaimTypeReferenceId="safeB64Address" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:NZPost:AVS:Assertion:JSON:Address" />
-    ```
+3. Follow the integration steps as describe for the MTS environment, but you will have to use your own cert rather than using the certificate provided by RealMe (`mts_saml_sp.p12/pfx`).
 
 ## ITE Request
 
-1. Create a new ITE request on the [RealMe developers website](https://developers.realme.govt.nz/):
-2. In ITE request, specify:
-- `RCMS token required` in the **Opaque token** dropdown.
-- `Return JSON identity and/or address` in the **Additional setup description** textarea.
+4. Compress saved Metadata from B2C retrieved from Assertion-MTS instructions:
+(re: Download the B2C metadata file (replace `yourtenant` with the name of your B2C tenant):
+  `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/B2C_1A_SignUpSignInRealMeAssertion/samlp/metadata?idptp=RealMeAssertion-SAML2`)
+
+5. Create a new ITE request on the [RealMe developers website](https://developers.realme.govt.nz/projects/):
+6. In ITE request, specify:
+   a) Online Service integrations - Organization and project name, environment, login type (Login, Assertion or Login and Assertion) and requested integration date.
+   b) SAML Service Provider configuration (for example `Azure AD B2C`) and select the zip file archive containing the Agency Metadata (extracted by the B2C SAML metadata).
+   c) Complete Agency co-branding customization.
+   d) Complete Service Provider SAML AuthnRequest section - AllowCreate allows users to Sign Up, and required Authentication Strength (Low, Mod or Token).
+   e) Click `SAVE` and `SUBMIT TO DIA` buttons to request ITE integration.
 
 ## Obtaining the Federate Login Token
 

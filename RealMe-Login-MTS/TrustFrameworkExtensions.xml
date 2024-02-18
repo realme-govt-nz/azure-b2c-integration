@@ -27,9 +27,8 @@
             <Item Key="NameIdPolicyAllowCreate">true</Item>
             <Item Key="IncludeAuthnContextClassReferences">urn:nzl:govt:ict:stds:authn:deployment:GLS:SAML:2.0:ac:classes:LowStrength</Item>
             <Item Key="PartnerEntity"><![CDATA[
-            Add RealMe Metadata Here
-            ]]>
-            </Item>
+              Add RealMe Login Metadata Here
+              ]]></Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageSigning" />
@@ -85,5 +84,4 @@
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>
   </UserJourneys>
-
 </TrustFrameworkPolicy>

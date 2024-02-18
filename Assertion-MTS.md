@@ -40,15 +40,15 @@ Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b
 5. For **Key usage**, select `Encryption`.
 6. Click **Create**.
 
-### Upload the certificate used between Azure AD B2C and Relame to exchange data.
+### Upload the certificate used between Azure AD B2C and RealMe to exchange data.
 
-1. Download the `Integration-Bundle-MTS-VX.X.zip` from the [RealMe Developer Website](https://developers.realme.govt.nz/try-it-out-now/) and unzip it.
-2. Rename the file `mts_mutual_ssl_sp.p12` to `mts_mutual_ssl_sp.pfx`.
+1. Download the `MTS-Post-Onboarding-Bundle-2023.zip` from the [RealMe Developer Website](https://developers.realme.govt.nz/try-it-out-now/) and unzip it.
+2. Rename the file `mts_saml_sp.p12` to `mts_saml_sp.pfx`.
 3. Select **Policy Keys** and then select **Add**.
 4. For **Options**, choose `Upload`.
-5. In **Name**, enter `SamlMessageSigning`. The prefix B2C_1A_ might be added automatically.
-6. In **File upload**, select the `mts_mutual_ssl_sp.pfx` file.
-7. In **Password**, enter the password of the certificate (you can find this information in the `readme.txt` file in the `Integration-Bundle-MTS-VX.X.zip` zipped file)
+5. In **Name**, enter `SamlMessageSigning`. The prefix B2C_1A_ will be added automatically.
+6. In **File upload**, select the `mts_saml_sp.pfx` file.
+7. In **Password**, enter the password of the certificate (you can find this information in the `readme.txt` file in the `MTS-Post-Onboarding-Bundle-2023.zip` zipped file)
 8. Click **Create**.
 
 ## Customizing the Custom policies files.
@@ -66,15 +66,26 @@ To know more about policies files, you can read the associated documentation: [P
 - `yourtenant` with the name of your B2C tenant (without the `.onmicrosoft.com`)
 - `yourEntityID` with a valid RealMe Issuer (see [RealMe request parameters](https://developers.realme.govt.nz/how-realme-works/realme-request-parameters)) in this format `https://www.agencyname.govt.nz/context/application-name`
 
-3. Update the RealMe Login SAML Metadat
-- From the `Integration-Bundle-MTS-VX.X.zip` (See previous step), open the `MTSIdPAssertSAMLMetadata.xml` file.
+3. Update the RealMe Assertion SAML Metadata:
+- From the `MTS-Post-Onboarding-Bundle-2023.zip` (See downloaded RealMe Bundle file), open the `MTSIdPAssertionSAMLMetadata.xml` file.
 - Copy the content of the file (do not copy the `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` line).
-- Open the `TrustFrameworkExtensions.xml` and past here:
+- Open the `TrustFrameworkExtensions.xml` as paste here inside the CDATA section:
 
     ```xml
     <Item Key="PartnerEntity"><![CDATA[
-    Add RealMe Metadata Here
+    Add RealMe Assertion Metadata Here
     ]]>
+    ```
+- To change the Assertion format to XML, replace the following lines:
+
+    ```
+    <OutputClaim ClaimTypeReferenceId="safeB64Identity" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:igovt:IVS:Assertion:JSON:Identity" />
+    <OutputClaim ClaimTypeReferenceId="safeB64Address" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:NZPost:AVS:Assertion:JSON:Address" />
+    ``` 
+    with these lines:
+    ```
+    <OutputClaim ClaimTypeReferenceId="safeB64Identity" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:igovt:IVS:Assertion:Identity" />
+    <OutputClaim ClaimTypeReferenceId="safeB64Address" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:NZPost:AVS:Assertion:Address" />
     ```
 - Save your changes.
 
@@ -86,48 +97,72 @@ To know more about policies files, you can read the associated documentation: [P
 
 1. Download the B2C metadata file (replace `yourtenant` with the name of your B2C tenant):
   `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/B2C_1A_SignUpSignInRealMeAssertion/samlp/metadata?idptp=RealMeAssertion-SAML2`
-- If you want to use the `login.microsoftonline.com` domain, download the metadata file from this url (replace `yourtenant` with the name of your B2C tenant):
-  `https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/B2C_1A_SignUpSignInRealMeAssertion/samlp/metadata?idptp=RealMeAssertion-SAML2`
 
 2. Open the file and remove the `<Signature>...</Signature>` tag.
 
-3. Browse this url: https://mts.realme.govt.nz/realme-mts/metadata/import.xhtml
-- Select the metadata file you want to upload then click **Validate**.
-- If the file is valid, you can click **Import**.
+3. Browse this url: https://mtscloud.realme.govt.nz/Assertion/Metadata/Validate
+- Select the metadata file you want to upload then click **Upload File**.
 - On the next page, click **Import** then **Continue**.
-- Update your configuration: https://mts.realme.govt.nz/realme-mts/metadata/updateconfiguration.xhtml
-- Select `yourEntityID` in the **entity ID** field.
-- Select `JWT Opaque Token` in the **Opaque Token Return Type** dropdown.
-- Select the fields you need to be returned.
-- Click **Submit**.
+- Update your configuration: https://mtscloud.realme.govt.nz/Assertion/Metadata/SelectConfig
+- Select `yourEntityID` in the **entity ID** field, and click **View**.
+- Select `Low Strength` in the **Default Authentication Strength** dropdown. If you'd like to change the setting to `Moderate Strength`, you will have to update the `TrustFrameworkExtensions.xml` file. Search for **IncludeAuthnContextClassReferences** and change the value to `urn:nzl:govt:ict:stds:authn:deployment:GLS:SAML:2.0:ac:classes:ModStrength`.
+- Change **Assertion Flow** to `AssertAndLogin`.
+- Change **Reponse Format** to `JSON` (Recommended as the default, otherwise select `XML` if updated Assertions in previous steps).
+- Make sure `Return LAT (AssertAndLogin or AssertAndAlwaysLogin flows)` is checked.
+- Click **Update**.
 
 ## Testing the policy
 
 To test the policy, create an application registration in the B2C. the token will be send to https://jwt.ms/.
 
-1. In the B2C Tenant, Click on **Indentiy Experience Framework**.
+1. In the B2C Tenant, Click on **Identity Experience Framework**.
 2. Click on **Applications**.
-3. On the application page, clieck on **Add**
+3. On the application page, click on **Add**
 4. On the application creation page
     - Enter `jwt.ms` in the **Name** field.
-    - Select `Yes` for **Include web app / web API**
-    - Select `Yes` for **allow implicit flow**
-    - Enter `https://jwt.ms/` 
-    - Click on **Create**
+    - Select `Accounts in any identity provider or organizational directory (for authenticating users with user flows)` for **Supported account types**
+    - Select `Web` for **Select a platform** and set value to `https://jwt.ms/`.
+    - Click on **Register**
+    - Select `Authentication` section under **Manage**, and check Access Tokens + ID tokens check boxes.
+    - Click on **Save**
 
-5. On the  **Indentiy Experience Framework**, select the `B2C_1A_SignUpSignInRealMeAssertion` policy:
-6. The previously created application should be preselected otherwithe select `jwt.ms` in the **Select application** dropdown.
-7. Select the domain you want to use. This should be the based on the metadata file you've uploaded to realme.
-8. Click on the **Run now** button, you will be redirected to RealMe
-9. On the RealMe website, fill the IVs attributes then click on `Initiate SAML Response`, it will redirect you to the https://jwt.ms/ website.
+5. On the **Identity Experience Framework**, select the `B2C_1A_SignUpSignInRealMeAssertion` policy:
+6. The previously created application should be preselected otherwise select `jwt.ms` in the **Select application** dropdown.
+7. Click on the **Run now** button, you will be redirected to RealMe
+8. On the RealMe website, fill the IVS attributes required
+9. Click on `Generate FLT` to generate a new random FLT to use (optional)
+10. Click on `Initiate SAML Response`, it will redirect you to the https://jwt.ms/ website.
 
 You can inspect the token returned by B2C:
 - The **sub** claim contains the B2C `objectid`.
 - The **idp** claim contains the B2C `realme.govt.nz`.
 - The **safeB64Identity** claim contains the RealMe `Verified Identity`.
 - The **safeB64Address** claim contains the RealMe `Verified Address`.
-- The **rcmsOpaqueToken** claim contains the RealMe `RCMS opaque token`. 
+- The **lat** claim contains the RealMe `LAT opaque token`. 
 - The **issuerUserId** and **fit** claims will be returned correctly once integrated in the RealMe ITE environment.
+
+Sample token:
+{
+  "alg": "RS256",
+  "kid": "00000000000000000000000000",
+  "typ": "JWT"
+}.{
+  "ver": "1.0",
+  "iss": "https://tenantname.b2clogin.com/00000000-0000-0000-0000-000000000000/v2.0/",
+  "sub": "00000000-0000-0000-0000-000000000000",
+  "aud": "00000000-0000-0000-0000-000000000000",
+  "exp": 1701141094,
+  "acr": "b2c_1a_signupsigninrealmeassertion",
+  "nonce": "defaultNonce",
+  "iat": 1701137494,
+  "auth_time": 1701137494,
+  "issuerUserId": "AZUE0000000000000000000000000000000",
+  "fit": "AZUE0000000000000000000000000000000",
+  "safeB64Identity": "ABCDEFGHIJKL...",
+  "safeB64Address": "ABCDEFGHIJKL...",
+  "idp": "realme.govt.nz",
+  "nbf": 1701137494
+}.[Signature]
 
 ## Decoding the verified identity and address
 
@@ -158,4 +193,4 @@ Azure Active Directory B2C:
 
 Real Me:
 - [RealMe for developers](https://developers.realme.govt.nz/)
-- [RealMe assertion service MTS](https://mts.realme.govt.nz/realme-mts/home/information.xhtml)
+- [RealMe assertion service MTS](https://mtscloud.realme.govt.nz/Assertion/home)

@@ -28,8 +28,8 @@
         <UserHelpText />
         <UserInputType>TextBox</UserInputType>
       </ClaimType>
-      <ClaimType Id="rcmsOpaqueToken">
-        <DisplayName>The RCMS opaque token</DisplayName>
+      <ClaimType Id="lat">
+        <DisplayName>The lat opaque token</DisplayName>
         <DataType>string</DataType>
         <UserHelpText />
         <UserInputType>TextBox</UserInputType>
@@ -56,9 +56,8 @@
             <Item Key="NameIdPolicyFormat">urn:oasis:names:tc:SAML:2.0:nameid-format:transient</Item>
             <Item Key="IncludeAuthnContextClassReferences">urn:nzl:govt:ict:stds:authn:deployment:GLS:SAML:2.0:ac:classes:ModStrength</Item>
             <Item Key="PartnerEntity"><![CDATA[
-            Add RealMe Metadata Here
-            ]]>
-            </Item>
+              Add RealMe Assertion Metadata Here
+              ]]></Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageSigning" />
@@ -67,9 +66,9 @@
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="yourEntityID" />
             <OutputClaim ClaimTypeReferenceId="fit" PartnerClaimType="urn:nzl:govt:ict:stds:authn:attribute:igovt:IVS:FIT" />
-            <OutputClaim ClaimTypeReferenceId="safeB64Identity" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:igovt:IVS:Assertion:Identity" />
-            <OutputClaim ClaimTypeReferenceId="safeB64Address" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:NZPost:AVS:Assertion:Address" />
-            <OutputClaim ClaimTypeReferenceId="rcmsOpaqueToken" PartnerClaimType="urn:nzl:govt:ict:stds:authn:attribute:rcms_opaque_token" />
+            <OutputClaim ClaimTypeReferenceId="safeB64Identity" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:igovt:IVS:Assertion:JSON:Identity" />
+            <OutputClaim ClaimTypeReferenceId="safeB64Address" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:NZPost:AVS:Assertion:JSON:Address" />
+            <OutputClaim ClaimTypeReferenceId="lat" PartnerClaimType="logon_attributes_token" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="realme.govt.nz" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
           </OutputClaims>
@@ -118,5 +117,4 @@
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>
   </UserJourneys>
-
 </TrustFrameworkPolicy>
